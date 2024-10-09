@@ -1,31 +1,34 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 78
+    Help Height: 138
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Status1
         - /TF1/Frames1
         - /TF1/Tree1
-      Splitter Ratio: 0.5
-    Tree Height: 486
+        - /H_lidar1/Autocompute Value Bounds1
+        - /T_lidar1/Autocompute Value Bounds1
+      Splitter Ratio: 0.62770015001297
+    Tree Height: 1516
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
     Expanded: ~
     Name: Tool Properties
-    Splitter Ratio: 0.588679
+    Splitter Ratio: 0.5886790156364441
   - Class: rviz/Views
     Expanded:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
-    Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: H_lidar
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -35,7 +38,7 @@ Visualization Manager:
       Color: 160; 160; 164
       Enabled: true
       Line Style:
-        Line Width: 0.03
+        Line Width: 0.029999999329447746
         Value: Lines
       Name: Grid
       Normal Cell Count: 0
@@ -66,12 +69,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        fenders_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_laser:
+        front_fender_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -90,6 +88,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        h_lidar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        h_lidar_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         imu_link:
           Alpha: 1
           Show Axes: false
@@ -99,6 +107,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         navsat_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_fender_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -117,6 +130,42 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        sensor_plate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        t_lidar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        t_lidar_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        theta_camera_back_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        theta_camera_back_camera_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        theta_camera_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        theta_camera_front_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        theta_camera_front_camera_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -124,19 +173,107 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
+        base_link:
+          Value: true
+        chassis_link:
+          Value: false
+        front_fender_link:
+          Value: false
+        front_left_wheel_link:
+          Value: false
+        front_mount:
+          Value: false
+        front_right_wheel_link:
+          Value: false
+        h_lidar:
+          Value: false
+        h_lidar_base_link:
+          Value: false
+        imu_link:
+          Value: false
+        mid_mount:
+          Value: false
+        navsat_link:
+          Value: false
+        odom:
+          Value: true
+        rear_fender_link:
+          Value: false
+        rear_left_wheel_link:
+          Value: false
+        rear_mount:
+          Value: false
+        rear_right_wheel_link:
+          Value: false
+        sensor_plate_link:
+          Value: false
+        t_lidar:
+          Value: false
+        t_lidar_base_link:
+          Value: false
+        theta_camera_back_camera:
+          Value: true
+        theta_camera_back_camera_optical:
+          Value: true
+        theta_camera_base:
+          Value: true
+        theta_camera_front_camera:
+          Value: true
+        theta_camera_front_camera_optical:
+          Value: true
+      Marker Alpha: 1
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        odom:
+          base_link:
+            chassis_link:
+              front_fender_link:
+                {}
+              front_left_wheel_link:
+                {}
+              front_right_wheel_link:
+                {}
+              imu_link:
+                {}
+              mid_mount:
+                front_mount:
+                  {}
+                rear_mount:
+                  {}
+                sensor_plate_link:
+                  h_lidar_base_link:
+                    h_lidar:
+                      {}
+                  t_lidar_base_link:
+                    t_lidar:
+                      {}
+                  theta_camera_base:
+                    theta_camera_back_camera:
+                      theta_camera_back_camera_optical:
+                        {}
+                    theta_camera_front_camera:
+                      theta_camera_front_camera_optical:
+                        {}
+              navsat_link:
+                {}
+              rear_fender_link:
+                {}
+              rear_left_wheel_link:
+                {}
+              rear_right_wheel_link:
+                {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Class: rviz/InteractiveMarkers
       Enable Transparency: true
       Enabled: true
@@ -146,9 +283,90 @@ Visualization Manager:
       Show Visual Aids: false
       Update Topic: /twist_marker_server/update
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 5
+        Min Value: 0
+        Value: false
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 255; 0
+      Name: H_lidar
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 2
+      Size (m): 0.009999999776482582
+      Style: Points
+      Topic: /h_lidar/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 5
+        Min Value: 0
+        Value: false
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 135; 23; 246
+      Name: T_lidar
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 2
+      Size (m): 0.009999999776482582
+      Style: Points
+      Topic: /t_lidar/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /theta_camera_front_camera/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Theta_Front
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /theta_camera_back_camera/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Theta_Back
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
+    Default Light: true
     Fixed Frame: odom
     Frame Rate: 30
   Name: root
@@ -161,31 +379,38 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.36919
+      Distance: 16.76944923400879
       Enable Stereo Rendering:
-        Stereo Eye Separation: 0.06
+        Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -2.964423656463623
+        Y: -0.3564490079879761
+        Z: 0.35766837000846863
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
       Name: Current View
-      Near Clip Distance: 0.01
-      Pitch: 0.610398
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.6653986573219299
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 4.65541
+      Yaw: 0.5054197907447815
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 767
+  Height: 2084
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000012300000275fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000275000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000275fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000002800000275000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004d40000003efc0100000002fb0000000800540069006d00650100000000000004d4000002f600fffffffb0000000800540069006d00650100000000000004500000000000000000000002960000027500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000003150000071efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b000000b000fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000b0fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000006e0000071e000001bc01000039fa000000010100000002fb0000000a005600690065007700730100000000ffffffff0000015f00fffffffb000000100044006900730070006c006100790073010000000000000315000001f700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c0000026100000001000004120000071efc0200000004fb0000001600540068006500740061005f00460072006f006e0074010000006e000003810000002600fffffffb0000001400540068006500740061005f004200610063006b01000003fb000003910000002600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000010860000005efc0100000002fb0000000800540069006d0065010000000000001086000006dc00fffffffb0000000800540069006d00650100000000000004500000000000000000000009470000071e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
+    collapsed: false
+  Theta_Back:
+    collapsed: false
+  Theta_Front:
     collapsed: false
   Time:
     collapsed: false
@@ -193,6 +418,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1236
-  X: 55
-  Y: 14
+  Width: 4230
+  X: 72
+  Y: 0
