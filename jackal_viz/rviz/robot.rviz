@@ -8,8 +8,8 @@ Panels:
         - /TF1/Tree1
         - /H_lidar1/Autocompute Value Bounds1
         - /T_lidar1/Autocompute Value Bounds1
-      Splitter Ratio: 0.62770015001297
-    Tree Height: 1516
+      Splitter Ratio: 0.4008714556694031
+    Tree Height: 598
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -88,6 +88,31 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        front_zed_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_zed_camera_center:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_zed_left_camera_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_zed_left_camera_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_zed_right_camera_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_zed_right_camera_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         h_lidar:
           Alpha: 1
           Show Axes: false
@@ -102,6 +127,15 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        microstrain_imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        microstrain_imu_link_center:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         mid_mount:
           Alpha: 1
           Show Axes: false
@@ -191,12 +225,32 @@ Visualization Manager:
           Value: false
         front_right_wheel_link:
           Value: false
+        front_zed_base_link:
+          Value: true
+        front_zed_camera_center:
+          Value: true
+        front_zed_imu_link:
+          Value: true
+        front_zed_left_camera_frame:
+          Value: true
+        front_zed_left_camera_optical_frame:
+          Value: true
+        front_zed_right_camera_frame:
+          Value: true
+        front_zed_right_camera_optical_frame:
+          Value: true
+        gnss_1_antenna_link:
+          Value: true
         h_lidar:
           Value: false
         h_lidar_base_link:
           Value: false
         imu_link:
           Value: false
+        microstrain_imu_link:
+          Value: true
+        microstrain_imu_link_center:
+          Value: true
         mid_mount:
           Value: false
         navsat_link:
@@ -228,7 +282,7 @@ Visualization Manager:
         theta_camera_front_camera_optical:
           Value: true
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 0.10000000149011612
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -251,9 +305,23 @@ Visualization Manager:
                 rear_mount:
                   {}
                 sensor_plate_link:
+                  front_zed_base_link:
+                    front_zed_camera_center:
+                      front_zed_left_camera_frame:
+                        front_zed_imu_link:
+                          {}
+                        front_zed_left_camera_optical_frame:
+                          {}
+                      front_zed_right_camera_frame:
+                        front_zed_right_camera_optical_frame:
+                          {}
                   h_lidar_base_link:
                     h_lidar:
                       {}
+                  microstrain_imu_link_center:
+                    microstrain_imu_link:
+                      gnss_1_antenna_link:
+                        {}
                   t_lidar_base_link:
                     t_lidar:
                       {}
@@ -292,8 +360,8 @@ Visualization Manager:
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: AxisColor
+      Color: 20; 255; 255
+      Color Transformer: FlatColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -306,7 +374,7 @@ Visualization Manager:
       Size (Pixels): 2
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /h_lidar/points
+      Topic: /h_lidar/velodyne_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: false
@@ -320,8 +388,8 @@ Visualization Manager:
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: AxisColor
+      Color: 255; 255; 20
+      Color Transformer: FlatColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -334,14 +402,14 @@ Visualization Manager:
       Size (Pixels): 2
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /t_lidar/points
+      Topic: /t_lidar/velodyne_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: false
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /theta_camera_front_camera/image_raw
+      Image Topic: /theta/theta_cam_node_front/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -353,7 +421,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /theta_camera_back_camera/image_raw
+      Image Topic: /theta/theta_cam_node_back/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -363,9 +431,30 @@ Visualization Manager:
       Transport Hint: raw
       Unreliable: false
       Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /zed/front_zed/zed_node/rgb/image_rect_color
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: ZED_Left
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 0.5
+      Name: OdomFrame
+      Radius: 0.019999999552965164
+      Reference Frame: odom
+      Show Trail: false
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 0; 0; 0
     Default Light: true
     Fixed Frame: odom
     Frame Rate: 30
@@ -379,7 +468,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 16.76944923400879
+      Distance: 10.043351173400879
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -387,25 +476,25 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -2.964423656463623
-        Y: -0.3564490079879761
-        Z: 0.35766837000846863
-      Focal Shape Fixed Size: true
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6653986573219299
+      Pitch: 0.8003977537155151
       Target Frame: <Fixed Frame>
-      Yaw: 0.5054197907447815
+      Yaw: 2.2403995990753174
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 2084
+  Height: 1016
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000003150000071efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b000000b000fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000b0fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000006e0000071e000001bc01000039fa000000010100000002fb0000000a005600690065007700730100000000ffffffff0000015f00fffffffb000000100044006900730070006c006100790073010000000000000315000001f700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c0000026100000001000004120000071efc0200000004fb0000001600540068006500740061005f00460072006f006e0074010000006e000003810000002600fffffffb0000001400540068006500740061005f004200610063006b01000003fb000003910000002600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000010860000005efc0100000002fb0000000800540069006d0065010000000000001086000006dc00fffffffb0000000800540069006d00650100000000000004500000000000000000000009470000071e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000019a0000033afc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000b0fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003d0000033a000000e60100001cfa000000010100000002fb0000000a005600690065007700730100000000ffffffff0000010000fffffffb000000100044006900730070006c0061007900730100000000000003150000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c0000026100000001000001dc0000033afc0200000005fb00000010005a00450044005f004c006500660074010000003d0000011a0000001600fffffffb0000001600540068006500740061005f00460072006f006e0074010000015d000001080000001600fffffffb0000001400540068006500740061005f004200610063006b010000026b0000010c0000001600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000005efc0100000002fb0000000800540069006d0065010000000000000738000003bc00fffffffb0000000800540069006d00650100000000000004500000000000000000000003b60000033a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Theta_Back:
@@ -418,6 +507,8 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 4230
+  Width: 1848
   X: 72
-  Y: 0
+  Y: 27
+  ZED_Left:
+    collapsed: false
